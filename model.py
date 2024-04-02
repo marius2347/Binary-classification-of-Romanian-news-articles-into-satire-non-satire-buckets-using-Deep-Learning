@@ -1,9 +1,8 @@
 
 from tensorflow import keras
-
 from keras.layers import Input, Dense, Flatten, Reshape, Multiply, Activation
 from keras.layers import Conv1D, MaxPooling1D, Embedding, BatchNormalization
-from keras.layers import ThresholdedReLU, Dropout, GlobalAveragePooling1D, AlphaDropout
+from tensorflow.keras.layers import ThresholdedReLU, Dropout, GlobalAveragePooling1D, AlphaDropout
 from keras.layers import Layer
 from keras.models import Model
 import numpy as np
@@ -89,7 +88,7 @@ class CharCNN(object):
         inputs = Input(shape=(self.input_sz,), name='sent_input', dtype='int16')
 
         # Embedding layers
-        x = Embedding(self.alphabet_sz + 1, self.emb_sz, input_length=self.input_sz)(inputs)
+        x = Embedding(self.alphabet_sz + 1, self.input_sz, self.emb_sz)(inputs)
         x = Reshape((self.input_sz, self.emb_sz))(x)
 
         # Convolutional layers
