@@ -135,7 +135,7 @@ class CharCNN(object):
         :return: None
         """
         # Create callbacks
-        filepath= "checkpoints/weights-improvement-{epoch:02d}-acc-{val_accuracy:.2f}-loss-{val_loss:.2f}.hdf5"
+        filepath= "checkpoints/weights-improvement-{epoch:02d}-acc-{val_accuracy:.2f}-loss-{val_loss:.2f}.keras"
         checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
 
         metrics = Metrics((val_inputs, val_labels))
